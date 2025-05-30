@@ -1,5 +1,7 @@
 package com.codeacademy.receipe.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codeacademy.receipe.dto.RecipeDTO;
+import com.codeacademy.receipe.dto.SearchRecipe;
 import com.codeacademy.receipe.service.RecipeService;
 
 @RestController
@@ -39,6 +42,11 @@ public class RecipeController {
   @GetMapping(path = "getRecipe/{id}")
   public ResponseEntity<RecipeDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok(recipeService.getRecipe(id));
+  }
+
+  @PostMapping(path = "searchRecipe")
+  public ResponseEntity<List<RecipeDTO>> getById(@RequestBody SearchRecipe searchRecipe) {
+    return ResponseEntity.ok(recipeService.getRecipes(searchRecipe));
   }
 
 }

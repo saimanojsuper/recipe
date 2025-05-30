@@ -1,6 +1,9 @@
 package com.codeacademy.receipe.service;
 
+import java.util.List;
+
 import com.codeacademy.receipe.dto.RecipeDTO;
+import com.codeacademy.receipe.dto.SearchRecipe;
 
 public interface RecipeService {
   RecipeDTO createRecipe(RecipeDTO recipeDTO);
@@ -10,4 +13,6 @@ public interface RecipeService {
   boolean updateRecipe(RecipeDTO recipeDTO);
 
   RecipeDTO getRecipe(Long id);
+
+  List<RecipeDTO> getRecipes(SearchRecipe searchRecipe);
 }
